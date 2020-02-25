@@ -16,8 +16,12 @@ public class Main {
 		l1.wheelInfo();
 		l2.wheelInfo();*/
 		
-		Car car = new Car("car", 1, "1", 2, 3, 4, 5, 6, 4);
-		car.getWheels().get(2).tyreWear(21);
-		System.out.println(car.getWheels().get(2).getTyreStatus());
+		Car car = new Car("car", 1, "1", 130, 3, 4, 5, 6, 4);
+		//car.getWheels().get(2).tyreWear(21);
+		//System.out.println(car.getWheels().get(2).getTyreStatus());
+		//System.out.println();
+		//System.out.println(car.currentMaxSpeed());
+		//car.carInfo();
+		car.carInterface();
 	}
 }
