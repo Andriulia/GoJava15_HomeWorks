@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 class UserData {
 	static void data() {
+		
 		String input;
-		int age = 0;
-
 		do {
 			System.out.println("Input name: ");
 			input = inputVerifier();
@@ -19,6 +18,7 @@ class UserData {
 		} while (input.isEmpty());
 		String city = input;
 
+		int age;
 		do {
 			System.out.println("Input age: ");
 			age = ageVerifier();
@@ -31,22 +31,22 @@ class UserData {
 		String hobby = input;
 
 		System.out.print("\n----------------------------------\n" +
-						 "Вариант 1 (табличный):\n" +
-						 "Имя: " + capitalLetter(name) + "\n" +
-						 "Город: " + capitalLetter(city) + "\n" +
-						 "Возраст: " + age + "\n" +
-						 "Хобби: " + hobby + "\n" +
-						 "----------------------------------\n" +
-						 "Вариант 2 (текстовый):\n" +
-						 "Человек по имени " + capitalLetter(name) + " живет в городе " + capitalLetter(city) + ".\n" +
-						 "Этому человеку " + age + " лет и любит он заниматься " + hobby + ".\n" +
-						 "----------------------------------\n" +
-						 "Вариант 3 (иной):\n" +
-						 capitalLetter(	name) + " - имя\n" +
-						 capitalLetter(city) + " - город\n" +
-						 age + " - возраст\n" +
-						 hobby + " - хобби\n" +
-						 "----------------------------------");
+				"Вариант 1 (табличный):\n" +
+				"Имя: " + capitalLetter(name) + "\n" +
+				"Город: " + capitalLetter(city) + "\n" +
+				"Возраст: " + age + "\n" +
+				"Хобби: " + hobby + "\n" +
+				"----------------------------------\n" +
+				"Вариант 2 (текстовый):\n" +
+				"Человек по имени " + capitalLetter(name) + " живет в городе " + capitalLetter(city) + ".\n" +
+				"Этому человеку " + age + " лет и любит он заниматься " + hobby + ".\n" +
+				"----------------------------------\n" +
+				"Вариант 3 (иной):\n" +
+				capitalLetter(	name) + " - имя\n" +
+				capitalLetter(city) + " - город\n" +
+				age + " - возраст\n" +
+				hobby + " - хобби\n" +
+				"----------------------------------");
 	}
 
 	private static String inputVerifier() {
@@ -67,14 +67,14 @@ class UserData {
 			System.exit(222);
 		}
 		try {
-				int i = Integer.parseInt(s.split(" ")[0]);
+			int i = Integer.parseInt(s.split(" ")[0]);
 			if (i > 0 && i < 150)
 			{
 				return i;
 			}
 		} catch (NumberFormatException nfe) {
 			return 0;
-	}
+		}
 		return 0;
 	}
 
