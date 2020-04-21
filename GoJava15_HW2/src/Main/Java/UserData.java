@@ -5,7 +5,7 @@ import java.util.Scanner;
 class UserData {
 	static void data() {
 		String input;
-		int age;
+		int age = 0;
 
 		do {
 			System.out.println("Input name: ");
@@ -32,18 +32,18 @@ class UserData {
 
 		System.out.print("\n----------------------------------\n" +
 						 "Вариант 1 (табличный):\n" +
-						 "Имя: " + name + "\n" +
-						 "Город: " + city + "\n" +
+						 "Имя: " + capitalLetter(name) + "\n" +
+						 "Город: " + capitalLetter(city) + "\n" +
 						 "Возраст: " + age + "\n" +
 						 "Хобби: " + hobby + "\n" +
 						 "----------------------------------\n" +
 						 "Вариант 2 (текстовый):\n" +
-						 "Человек по имени " + name + " живет в городе " + city + ".\n" +
+						 "Человек по имени " + capitalLetter(name) + " живет в городе " + capitalLetter(city) + ".\n" +
 						 "Этому человеку " + age + " лет и любит он заниматься " + hobby + ".\n" +
 						 "----------------------------------\n" +
 						 "Вариант 3 (иной):\n" +
-						 name + " - имя\n" +
-						 city + " - город\n" +
+						 capitalLetter(	name) + " - имя\n" +
+						 capitalLetter(city) + " - город\n" +
 						 age + " - возраст\n" +
 						 hobby + " - хобби\n" +
 						 "----------------------------------");
@@ -52,33 +52,33 @@ class UserData {
 	private static String inputVerifier() {
 		Scanner sc = new Scanner(System.in);
 		String s = sc.nextLine();
-		if (s.equals("q") || s.equals("Q") || s.equals("quit") || s.equals("Quit"))
-		{
+		if (s.equalsIgnoreCase("q") | s.equalsIgnoreCase("quit")) {
 			System.exit(111);
 		}
-		return s;
+		return s.trim();
 	}
 
 	private static int ageVerifier() {
 		Scanner sc = new Scanner(System.in);
-		String s;
-		int i;
-		if (sc.hasNextInt())
-		{
-			i = sc.nextInt();
+		String s = sc. nextLine();
+		if (s.trim().isEmpty()) {
+			return 0;
+		} else if (s.equalsIgnoreCase("q") || s.equalsIgnoreCase("quit")) {
+			System.exit(222);
+		}
+		try {
+				int i = Integer.parseInt(s.split(" ")[0]);
 			if (i > 0 && i < 150)
 			{
 				return i;
 			}
-			else
-			{
-				s = sc.nextLine();
-				if (s.equalsIgnoreCase("q") || s.equalsIgnoreCase("quit"))
-				{
-					System.exit(222);
-				}
-			}
-		}
+		} catch (NumberFormatException nfe) {
+			return 0;
+	}
 		return 0;
+	}
+
+	private static String capitalLetter (String s){
+		return s.substring(0, 1).toUpperCase() + s.substring(1);
 	}
 }
